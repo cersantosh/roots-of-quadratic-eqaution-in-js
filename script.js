@@ -1,49 +1,32 @@
-let topIndex = -1;
-let stack = new Array(5);
 
-function push(data){
-    if(isFull()){
-        console.log("Stack is full");
-        return;
-    }
-    topIndex++;
-    stack[topIndex] = data;
+let a = prompt("Enter value of a")
+let b = prompt("Enter value of b")
+let c = prompt("Enter value of c")
+
+console.log(`Equation is ${a} x ^ 2 + ${b} x + ${c}`)
+
+let dis = b * b - 4 * a * c;
+let root1;
+let root2;
+
+
+
+if(dis == 0){
+    root1 = root2 = (-b)/ (2 * a);
+    console.log("Roots are real and equal")
+    console.log(`Root1 = ${root1.toFixed(3)} and Root2 = ${root2.toFixed(3)}`)
 }
+else if(dis > 0){
+    root1 = ((-b) + Math.sqrt(dis)) / (2 * a);
+    root2 = ((-b) - Math.sqrt(dis)) / (2 * a);
+    console.log("Rotts are real and unequal")
+    console.log(`Root1 = ${root1.toFixed(3)} and Root2 = ${root2.toFixed(3)}`)
 
-function pop(){
-    if(isEmpty()){
-        console.log("Stack is empty");
-        return;
-    }
-    let poppedData = stack[topIndex];
-    topIndex--;
-    return poppedData;
 }
-
-
-function isEmpty(){
-    if(topIndex == -1)
-        return true;
-        return false;
+else{
+    let real = (-b) / (2 * a);
+    root1 = root2 = Math.sqrt(-dis) / (2 * a);
+    root1 = root2 = root1.toFixed(3);
+    console.log("Roots are imaginary and unequal")
+    console.log(`Root1 = ${real} + i ${root1} and Root2 = ${real} - i ${root2}`)
 }
-
-function isFull(){
-    if(topIndex == stack.length - 1)
-        return true;
-        return false;
-}
-
-function print_data(){
-    for(let i = 0; i <= topIndex; i++){
-        document.write(stack[i] + " ");
-    }
-}
-
-push(12)
-push(78)
-pop()
-pop()
-pop()
-
-
-print_data()
